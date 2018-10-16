@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PracticaSetting</string>
+    <string name="btn_play">Jugar</string>
+    <string name="btn_rank">Rànking</string>
+    <string name="btn_settings">Ajustaments</string>
+    <string name="btn_about">Quant a...</string>
+    <string name="act_play">Jugar</string>
+    <string name="act_rank">Rànking</string>
+    <string name="txt_name">Desarrollador: Tania Ramon</string>
+    <string name="txt_description">Actualment estudiant DAM a Stucom per millorar les meves habilitats com a desarrolladora.</string>
+    <string name="lbl_name">Nom:</string>
+    <string name="lbl_email">E-mail:</string>
+</resources>

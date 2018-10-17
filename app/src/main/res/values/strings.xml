@@ -10,4 +10,5 @@
     <string name="txt_description">Currently studying DAM in Stucom to improve my developing skills.</string>
     <string name="lbl_name">Name:</string>
     <string name="lbl_email">E-mail:</string>
+    <string name="lblButtons">Select or take a picture</string>
 </resources>

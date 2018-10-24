@@ -12,4 +12,5 @@
     <string name="lbl_name">Nom:</string>
     <string name="lbl_email">E-mail:</string>
     <string name="lblButtons">Fes una foto o tria una</string>
+    <string name="btnMaps">Localització</string>
 </resources>

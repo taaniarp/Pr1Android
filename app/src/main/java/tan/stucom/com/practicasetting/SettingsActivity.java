@@ -107,21 +107,25 @@ public class SettingsActivity extends AppCompatActivity {
 
     //Method to take a picture
     private void takePhotoFromCamera() {
-        Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(intent, CAMERA);
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(intent, CAMERA);
+        }
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == this.RESULT_CANCELED) {
-            return;
-        }
-        if (requestCode == GALLERY) {
+        if (requestCode == GALLERY && resultCode == RESULT_OK) {
             if (data != null) {
                 Uri contentURI = data.getData();
-                try {
+                imgView.setImageURI(contentURI);
+                SharedPreferences prefs = getSharedPreferences(getPackageName(), MODE_PRIVATE);
+                SharedPreferences.Editor ed = prefs.edit();
+                ed.putString("img",contentURI.toString());
+                ed.apply();
+                /*try {
                     Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), contentURI);
                     String path = saveImage(bitmap);
                     Toast.makeText(SettingsActivity.this, "Image Saved!", Toast.LENGTH_SHORT).show();
@@ -130,10 +134,10 @@ public class SettingsActivity extends AppCompatActivity {
                 } catch (IOException e) {
                     e.printStackTrace();
                     Toast.makeText(SettingsActivity.this, "Failed!", Toast.LENGTH_SHORT).show();
-                }
+                }*/
             }
 
-        } else if (requestCode == CAMERA) {
+        } else if (requestCode == CAMERA && resultCode == RESULT_OK) {
             Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
             imgView.setImageBitmap(thumbnail);
             saveImage(thumbnail);
